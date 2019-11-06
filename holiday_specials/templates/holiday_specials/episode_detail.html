@@ -6,5 +6,5 @@
 <p>{{ episode.description }}</p>
 <p>First aired on: {{ episode.date }}</p>
 <p>Streaming on {{ episode.show.streaming_on }}</p>
-<a href="">(edit)</a>
+<a href="{% url 'episode_edit' pk=episode.pk %}">(edit)</a>
 {% endblock %}
