@@ -8,4 +8,6 @@ urlpatterns = [
     path('episodes/<int:pk>', views.episode_detail, name='episode_detail'),
     path('show/new', views.show_create, name='show_create'),
     path('episode/new', views.episode_create, name='episode_create'),
+    path('show/<int:pk>/edit', views.show_edit, name='show_edit'),
+    path('episode/<int:pk>/edit', views.episode_edit, name='episode_edit'),
 ]

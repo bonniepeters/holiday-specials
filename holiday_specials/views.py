@@ -37,3 +37,25 @@ def episode_create(request):
     else:
         form = EpisodeForm()
     return render(request, 'holiday_specials/episode_form.html', {'form': form})
+
+def show_edit(request, pk):
+    show = Show.objects.get(id=pk)
+    if request.method == 'POST':
+        form = ShowForm(request.POST, instance=show)
+        if form.is_valid():
+            show = form.save()
+            return redirect('show_detail', pk=show.pk)
+    else:
+        form = ShowForm(instance=show)
+    return render(request, 'holiday_specials/show_form.html', {'form': form})
+
+def episode_edit(request, pk):
+    episode = Episode.objects.get(id=pk)
+    if request.method == 'POST':
+        form = EpisodeForm(request.POST, instance=episode)
+        if form.is_valid():
+            episode = form.save()
+            return redirect('episode_detail', pk=episode.pk)
+    else:
+        form = EpisodeForm(instance=episode)
+    return render(request, 'holiday_specials/episode_form.html', {'form': form})
