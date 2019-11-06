@@ -1,0 +1,13 @@
+{% extends 'holiday_specials/base.html' %}
+{% block content %}
+
+<h2>Shows <a href="">(+)</a></h2>
+<ul>
+  {% for show in shows %}
+  <li>
+    <a href="{% url 'show_detail' pk=show.pk %}">{{ show.name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
