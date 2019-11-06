@@ -10,4 +10,6 @@ urlpatterns = [
     path('episode/new', views.episode_create, name='episode_create'),
     path('show/<int:pk>/edit', views.show_edit, name='show_edit'),
     path('episode/<int:pk>/edit', views.episode_edit, name='episode_edit'),
+    path('show/<int:pk>/delete', views.show_delete, name='show_delete'),
+    path('episode/<int:pk>/delete', views.episode_delete, name='episode_delete'),
 ]
