@@ -1,8 +1,10 @@
 {% extends 'holiday_specials/base.html' %}
 {% block content %}
 
-<h2>{{ episode.name }} <a href="">(edit)</a></h2>
-<h3>{{ episode.show }} {{ episode.season }}/{{ episode.episode }}</h3>
+<h2>{{ episode.name }}</h2>
+<h3>{{ episode.show }} S{{ episode.season }}/E{{ episode.episode }}</h3>
 <p>{{ episode.description }}</p>
-<p>{{ episode.date }}</p>
+<p>First aired on: {{ episode.date }}</p>
+<p>Streaming on {{ episode.show.streaming_on }}</p>
+<a href="">(edit)</a>
 {% endblock %}
