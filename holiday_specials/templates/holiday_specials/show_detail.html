@@ -1,15 +1,15 @@
 {% extends 'holiday_specials/base.html' %}
 {% block content %}
 
-<h2>{{ show.name }} <a href="">(edit)</a></h2>
+<h2>{{ show.name }}
 
 <h3>Episodes <a href="">(+)</a></h3>
 <ul>
   {% for episode in show.episodes.all %}
   <li>
-    <a href="">{{ episode }}</a>
+    <a href="{% url 'episode_detail' pk=episode.pk %}">{{ episode.name }}</a>
   </li>
   {% endfor %}
 </ul>
-
+<a href="">(edit)</a></h2>
 {% endblock %}

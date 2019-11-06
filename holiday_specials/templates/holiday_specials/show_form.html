@@ -1,0 +1,10 @@
+{% extends 'holiday_specials/base.html' %}
+{% block content %}
+
+<h1>New Show</h1>
+<form method="POST" class="show-form">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+
+{% endblock %}
