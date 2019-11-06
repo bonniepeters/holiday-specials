@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Show, Episode
 from .forms import ShowForm, EpisodeForm
 
@@ -59,3 +59,11 @@ def episode_edit(request, pk):
     else:
         form = EpisodeForm(instance=episode)
     return render(request, 'holiday_specials/episode_form.html', {'form': form})
+
+def show_delete(request, pk):
+    Show.objects.get(id=pk).delete()
+    return redirect('show_list')
+
+def episode_delete(request, pk):
+    Episode.objects.get(id=pk).delete()
+    return redirect('show_list')
