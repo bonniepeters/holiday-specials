@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Show, Episode
 from .forms import ShowForm, EpisodeForm
+from django.contrib.auth.decorators import login_required
 
 def show_list(request):
     shows = Show.objects.all()
@@ -18,6 +19,7 @@ def episode_detail(request, pk):
     episode = Episode.objects.get(id=pk)
     return render(request, 'holiday_specials/episode_detail.html', {'episode': episode})
 
+@login_required
 def show_create(request):
     if request.method == 'POST':
         form = ShowForm(request.POST)
@@ -28,6 +30,7 @@ def show_create(request):
         form = ShowForm()
     return render(request, 'holiday_specials/show_form.html', {'form': form})
 
+@login_required
 def episode_create(request):
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
@@ -38,6 +41,7 @@ def episode_create(request):
         form = EpisodeForm()
     return render(request, 'holiday_specials/episode_form.html', {'form': form})
 
+@login_required
 def show_edit(request, pk):
     show = Show.objects.get(id=pk)
     if request.method == 'POST':
@@ -49,6 +53,7 @@ def show_edit(request, pk):
         form = ShowForm(instance=show)
     return render(request, 'holiday_specials/show_form.html', {'form': form})
 
+@login_required
 def episode_edit(request, pk):
     episode = Episode.objects.get(id=pk)
     if request.method == 'POST':
@@ -60,10 +65,12 @@ def episode_edit(request, pk):
         form = EpisodeForm(instance=episode)
     return render(request, 'holiday_specials/episode_form.html', {'form': form})
 
+@login_required
 def show_delete(request, pk):
     Show.objects.get(id=pk).delete()
     return redirect('show_list')
 
+@login_required
 def episode_delete(request, pk):
     Episode.objects.get(id=pk).delete()
     return redirect('show_list')
