@@ -6,6 +6,7 @@
   {% for show in shows %}
   <li>
     <a href="{% url 'show_detail' pk=show.pk %}">{{ show.name }}</a>
+    <img src="{{ show.image_url }}">
   </li>
   {% endfor %}
 </ul>

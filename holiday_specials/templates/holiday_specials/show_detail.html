@@ -1,15 +1,20 @@
 {% extends 'holiday_specials/base.html' %}
 {% block content %}
 
-<h2>{{ show.name }}
+<h2><a href="{{show.imdb_url}}" target="blank">{{ show.name }}</a></h2>
+<p>({{ show.genre|title }}) Streaming on {{ show.streaming_on|title }}</p>
+<img src="{{ show.image_url }}">
+<p>{{ show.description }}</p>
 
-<h3>Episodes <a href="">(+)</a></h3>
+
+<h3>Episodes <a href="{% url 'episode_create' %}">(+)</a></h3>
 <ul>
   {% for episode in show.episodes.all %}
   <li>
-    <a href="{% url 'episode_detail' pk=episode.pk %}">{{ episode.name }}</a>
+    <a href="{% url 'episode_detail' pk=episode.pk %}">{{ episode }}</a>
   </li>
   {% endfor %}
 </ul>
-<a href="{% url 'show_edit' pk=show.pk %}">(edit)</a></h2>
+<a href="{% url 'show_edit' pk=show.pk %}">Edit</a></h2>
+<a href="{% url 'show_delete' pk=show.pk %}">Delete</a>
 {% endblock %}

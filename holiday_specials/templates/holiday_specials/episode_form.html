@@ -1,7 +1,12 @@
 {% extends 'holiday_specials/base.html' %}
 {% block content %}
 
-<h1>New Episode</h1>
+{% if new in request.path %}
+<h2>New Episode</h2>
+{% else %}
+<h2>Edit Episode</h2>
+{% endif %}
+
 <form method="POST" class="show-form">
   {% csrf_token %} {{ form.as_p }}
   <button type="submit">Save</button>

@@ -1,10 +1,19 @@
 {% extends 'holiday_specials/base.html' %}
 {% block content %}
 
-<h1>New Show</h1>
+{% if new in request.path %}
+<h2>New Show</h2>
+{% else %}
+<h2>Edit Show</h2>
+{% endif %}
+
 <form method="POST" class="show-form">
   {% csrf_token %} {{ form.as_p }}
   <button type="submit">Save</button>
 </form>
+
+{% if edit in request.path %}
+<a href="{% url 'show_delete' pk=show.pk %}">Delete</a>
+{% endif %}
 
 {% endblock %}

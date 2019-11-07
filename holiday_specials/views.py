@@ -32,7 +32,7 @@ def episode_create(request):
     if request.method == 'POST':
         form = EpisodeForm(request.POST)
         if form.is_valid():
-            show = form.save()
+            episode = form.save()
             return redirect('episode_detail', pk=episode.pk)
     else:
         form = EpisodeForm()

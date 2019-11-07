@@ -4,7 +4,8 @@
 <h2>{{ episode.name }}</h2>
 <h3>{{ episode.show }} S{{ episode.season }}/E{{ episode.episode }}</h3>
 <p>{{ episode.description }}</p>
-<p>First aired on: {{ episode.date }}</p>
-<p>Streaming on {{ episode.show.streaming_on }}</p>
-<a href="{% url 'episode_edit' pk=episode.pk %}">(edit)</a>
+<p>First aired on {{ episode.date }}</p>
+<p>Streaming on {{ episode.show.streaming_on|title }}</p>
+<a href="{% url 'episode_edit' pk=episode.pk %}">Edit</a>
+<a href="{% url 'episode_delete' pk=episode.pk %}">Delete</a>
 {% endblock %}
