@@ -1,16 +1,23 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Holiday Specials</title>
+    <title>The Holiday Binge Buddy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    <h1><a href='/'>Holiday Specials</a></h1>
+    <h1><a href='/'>The Holiday Binge Buddy</a></h1>
     <nav>
       <a href="{% url 'show_list' %}">Shows</a>
       <a href="{% url 'episode_list' %}">Episodes</a>
+      {% if user.is_authenticated %} Logged in as {{user.username }}
+      <a href="{% url 'logout' %}">Log out</a>
+      {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
     </nav>
     {% block content %}
     {% endblock %}
