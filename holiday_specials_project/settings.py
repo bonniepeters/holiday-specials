@@ -85,14 +85,17 @@ WSGI_APPLICATION = 'holiday_specials_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'holidayspecials',
+#         'USER': 'myuser',
+#         'PASSWORD': 'user',
+#         'HOST': 'localhost'
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'holidayspecials',
-        'USER': 'myuser',
-        'PASSWORD': 'user',
-        'HOST': 'localhost'
-    }
+    'default': os.environ.get('DATABASE_URL')
 }
 
 
