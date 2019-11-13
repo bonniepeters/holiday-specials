@@ -1,0 +1,1 @@
+web: gunicorn holiday_specials_project.wsgi
