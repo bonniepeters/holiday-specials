@@ -1,4 +1,4 @@
-"""holiday_specials_django URL Configuration
+"""holiday_specials_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -21,4 +21,5 @@ urlpatterns = [
    path('admin/', admin.site.urls),
    path('', include('holiday_specials.urls')),
    path('', include('accounts.urls')),
+   path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
