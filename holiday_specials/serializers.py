@@ -19,12 +19,3 @@ class EpisodeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Episode
         fields = ('id', 'show', 'Title', 'Released', 'Season', 'Episode', 'Runtime', 'Plot', 'Poster', 'imdbRating', 'imdbVotes', 'imdbID', 'imdbSeriesID', 'justWatchUrl', 'show_id',)
-
-    # def create(self, validated_data):
-    #     episode = Episode.objects.create(show=validated_data['show']['id'],
-    #         name=validated_data['name'], 
-    #         description=validated_data['description'], 
-    #         season=validated_data['season'],
-    #         episode=validated_data['episode'],
-    #         date=validated_data['date'],)
-    #     return episode
