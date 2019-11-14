@@ -1,36 +1,34 @@
 from django.db import models
 
-GENRE_CHOICES = (
-    ('comedy','Comedy'),
-    ('drama', 'Drama'),
-)
-
-STREAMING_CHOICES = {
-    ('netflix', 'Netflix'),
-    ('hulu', 'Hulu'),
-    ('amazon prime', 'Amazon Prime'),
-    ('hbo', 'HBO'),
-    ('other', 'Other'),
-}
-
 class Show(models.Model):
-    name = models.CharField(max_length=60)
-    description = models.TextField()
-    streaming_on = models.CharField(max_length=20, choices=STREAMING_CHOICES, default='netflix')
-    image_url = models.TextField()
-    imdb_url = models.TextField()
-    genre = models.CharField(max_length=6, choices=GENRE_CHOICES, default='comedy')
+    Title = models.CharField(max_length=60, default='')
+    Year = models.CharField(max_length=10, default='')
+    Genre = models.CharField(max_length=10, default='')
+    Plot = models.TextField(default='')
+    Poster = models.TextField(default='')
+    imdbRating = models.PositiveIntegerField(default=1)
+    imdbVotes = models.CharField(max_length=30, default='')
+    imdbID = models.CharField(max_length=15, default='')
+    totalSeasons = models.PositiveIntegerField(default=1)
+    justWatchUrl = models.CharField(max_length=60, default='')
 
     def __str__(self):
-        return self.name
+        return self.Title
 
 class Episode(models.Model):
     show = models.ForeignKey(Show, on_delete=models.CASCADE, related_name='episodes')
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    season = models.PositiveIntegerField(default=1)
-    episode = models.PositiveIntegerField(default=1)
-    date = models.DateField(auto_now=False, auto_now_add=False)
+    Title = models.CharField(max_length=100, default='')
+    Released = models.CharField(max_length=15, default='')
+    Season = models.PositiveIntegerField(default=1)
+    Episode = models.PositiveIntegerField(default=10)
+    Runtime = models.CharField(max_length=15, default='')
+    Plot = models.TextField(default='')
+    Poster = models.TextField(default='')
+    imdbRating = models.PositiveIntegerField(default=1)
+    imdbVotes = models.CharField(max_length=30, default='')
+    imdbID = models.CharField(max_length=15, default='')
+    imdbSeriesID = models.CharField(max_length=15, default='')
+    justWatchUrl = models.CharField(max_length=60, default='')
 
     def __str__(self):
-        return f"S{self.season}/E{self.episode} - {self.name}"
+        return f"S{self.Season}/E{self.Episode} - {self.Title}"
