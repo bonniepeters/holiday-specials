@@ -12,6 +12,7 @@ django-extensions = "*"
 djangorestframework = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-cors-middleware = "*"
 
 [requires]
 python_version = "3.7"
