@@ -32,35 +32,35 @@ class Episode(models.Model):
 
     def create(self, validated_data):
         episode = Episode.objects.create(show=validated_data['show']['id'],
-        Title=validated_data['Title'], 
-        Released=validated_data['Released'], 
-        Season=validated_data['Season'],
-        Episode=validated_data['Episode'],
-        Runtime=validated_data['Runtime'],
-        Plot=validated_data['Plot'],
-        Poster=validated_data['Poster'],
-        imdbRating=validated_data['imdbRating'],
-        imdbVotes=validated_data['imdbVotes'],
-        imdbID=validated_data['imdbID'],
-        imdbSeriesID=validated_data['imdbSeriesID'],
-        justWatchUrl=validated_data['justWatchUrl'],)
-    return episode
+            Title=validated_data['Title'], 
+            Released=validated_data['Released'], 
+            Season=validated_data['Season'],
+            Episode=validated_data['Episode'],
+            Runtime=validated_data['Runtime'],
+            Plot=validated_data['Plot'],
+            Poster=validated_data['Poster'],
+            imdbRating=validated_data['imdbRating'],
+            imdbVotes=validated_data['imdbVotes'],
+            imdbID=validated_data['imdbID'],
+            imdbSeriesID=validated_data['imdbSeriesID'],
+            justWatchUrl=validated_data['justWatchUrl'],)
+        return episode
 
     def update(self, validated_data):
         episode = Episode.objects.update(show=validated_data['show']['id'],
-        Title=validated_data['Title'], 
-        Released=validated_data['Released'], 
-        Season=validated_data['Season'],
-        Episode=validated_data['Episode'],
-        Runtime=validated_data['Runtime'],
-        Plot=validated_data['Plot'],
-        Poster=validated_data['Poster'],
-        imdbRating=validated_data['imdbRating'],
-        imdbVotes=validated_data['imdbVotes'],
-        imdbID=validated_data['imdbID'],
-        imdbSeriesID=validated_data['imdbSeriesID'],
-        justWatchUrl=validated_data['justWatchUrl'],)
-    return episode
+            Title=validated_data['Title'], 
+            Released=validated_data['Released'], 
+            Season=validated_data['Season'],
+            Episode=validated_data['Episode'],
+            Runtime=validated_data['Runtime'],
+            Plot=validated_data['Plot'],
+            Poster=validated_data['Poster'],
+            imdbRating=validated_data['imdbRating'],
+            imdbVotes=validated_data['imdbVotes'],
+            imdbID=validated_data['imdbID'],
+            imdbSeriesID=validated_data['imdbSeriesID'],
+            justWatchUrl=validated_data['justWatchUrl'],)
+        return episode
 
     def __str__(self):
         return f"S{self.Season}/E{self.Episode} - {self.Title}"
