@@ -37,7 +37,7 @@ class EpisodeSerializer(serializers.HyperlinkedModelSerializer):
         return episode
 
     def update(self, instance, validated_data):
-        instance.show = validated_data.get('show', instance.show)
+        instance.show = validated_data.get(('show')('id'), instance.show)
         instance.id = validated_data.get('id', instance.id)
         instance.Title = validated_data.get('Title', instance.Title) 
         instance.Released = validated_data.get('Released', instance.Released)
