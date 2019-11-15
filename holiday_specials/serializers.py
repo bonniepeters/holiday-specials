@@ -1,6 +1,11 @@
 from rest_framework import serializers
 from .models import Show, Episode
 
+class EpisodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Episode
+        fields = ('id', 'show', 'Title', 'Released', 'Season', 'Episode', 'Runtime', 'Plot', 'Poster', 'imdbRating', 'imdbVotes', 'imdbID', 'imdbSeriesID', 'justWatchUrl',)
+
 class ShowSerializer(serializers.ModelSerializer):
     episodes = EpisodeSerializer(
         many=True,
@@ -11,10 +16,6 @@ class ShowSerializer(serializers.ModelSerializer):
         model = Show
         fields = ('id', 'Title', 'Year', 'Genre', 'Plot', 'Poster', 'imdbRating', 'imdbVotes', 'imdbID', 'totalSeasons', 'justWatchUrl', 'episodes',)
 
-class EpisodeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Episode
-        fields = ('id', 'show', 'Title', 'Released', 'Season', 'Episode', 'Runtime', 'Plot', 'Poster', 'imdbRating', 'imdbVotes', 'imdbID', 'imdbSeriesID', 'justWatchUrl',)
         
     # def create(self, validated_data):
     #     episode = Episode.objects.create(show=validated_data['show']['id'],
