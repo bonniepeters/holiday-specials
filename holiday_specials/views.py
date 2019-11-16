@@ -18,6 +18,10 @@ class EpisodeList(generics.ListAPIView):
     queryset = Episode.objects.all()
     serializer_class = EpisodeSerializer
 
+class EpisodeCreate(generics.CreateAPIView):
+    queryset = Episode.objects.all()
+    serializer_class = EpisodeSerializer
+
 class EpisodeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Episode.objects.all()
     serializer_class = EpisodeSerializer
