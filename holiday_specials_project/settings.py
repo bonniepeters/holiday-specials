@@ -34,20 +34,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
-
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
-}
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
 
 # Application definition
 
@@ -59,8 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    # 'holiday_specials',
-    'holiday_specials.apps.HolidaySpecialsConfig',
+    'holiday_specials',
     'rest_framework',
     'corsheaders',
 ]
@@ -100,9 +89,9 @@ WSGI_APPLICATION = 'holiday_specials_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': os.environ.get('DATABASE_URL')
-# }
+DATABASES = {
+    'default': os.environ.get('DATABASE_URL')
+}
 
 # DATABASES = {
 #     'default': {
@@ -113,13 +102,6 @@ WSGI_APPLICATION = 'holiday_specials_project.wsgi.application'
 #         'HOST': 'localhost'
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -140,9 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'holiday_specials_project.utils.my_jwt_response_handler'
-}
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 

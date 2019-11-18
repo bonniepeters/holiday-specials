@@ -13,7 +13,6 @@ djangorestframework = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-cors-middleware = "*"
-djangorestframework-jwt = "*"
 django-cors-headers = "*"
 
 [requires]

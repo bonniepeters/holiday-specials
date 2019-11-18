@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from .views import current_user, UserList
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -10,6 +9,4 @@ urlpatterns = [
     path('shows/<int:pk>', views.ShowDetail.as_view(), name='show_detail'),
     path('episodes', views.EpisodeList.as_view(), name='episode_list'),
     path('episodes/<int:pk>', views.EpisodeDetail.as_view(), name='episode_detail'),
-    path('current_user/', current_user),
-    path('users/', UserList.as_view())
 ]
